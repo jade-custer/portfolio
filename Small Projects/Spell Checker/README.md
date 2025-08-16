@@ -1,0 +1,3 @@
+2024
+
+This project is based in a basic spell checker using hash functions to store values from a dictionary and using functions it has different functions to see what a dictionary contains, give suggestions, and read in dictionaries of varying sizes. The main menu is pretty simple with just needing to type in a number now to navigate to the wanted menu item. Suggestions has a slight limit to prevent stack overflows as I was having issues with it for a while. 

@@ -1,0 +1,4 @@
+2024
+
+
+I have two main classes: TextEditor and TextEditorTester.java. TextEditorTester.java is what holds the menu and the place to run. Menu items are stripped and done to lowercase for ease of not having caps issues or space issues. When opening the file it will ask if you want to open a file which needs to exist first. In the menu all the needed methods are added After editing the string then the program will print the new string. This goes for delete, undo, redo, find and replace, and paste. My program relies on following prompts given to the user via print statements. Save as doesn't require the file to be precreated. 
