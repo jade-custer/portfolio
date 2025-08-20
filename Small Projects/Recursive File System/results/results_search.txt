@@ -1,0 +1,2 @@
+/Users/jadecuster/Desktop/CS245/p1-2-social-network-analysis-jadecuster/Kaya.txt
+/Users/jadecuster/Desktop/CS245/p1-1-social-network-analysis-jadecuster/Kaya.txt

@@ -1,0 +1,3 @@
+/Users/jadecuster/Desktop/CS272/inclasscode/foo.txt
+/Users/jadecuster/Desktop/CS272/inclass/week02/section04/files/foo.txt
+/Users/jadecuster/Desktop/CS272/inclass/week02/section03/files/foo.txt

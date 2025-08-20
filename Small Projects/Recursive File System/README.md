@@ -1,0 +1,3 @@
+2024
+
+ My file traversal is set to start at whatever is given in the command line folder name. The menu works by typing in the name of the menu item and depending on whatever menu items is chosen. Implemented is a queue to add all the files so that they can be sorted through in main. The queue is based on the implementation done in class which means that all the code is copied for my uses here (some of the code is from the book and some if from what we did in class) One queue takes in all the File objects and reads them as TextFile objects then pushes these onto a different Queue. In the TextFile Queue then I would write the elements from the TextFile objects into the file

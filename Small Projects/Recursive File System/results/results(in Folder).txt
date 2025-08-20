@@ -1,0 +1,21 @@
+results.txt,0
+results(finding diskUsage).txt,58
+results(finding txt file).txt,194
+results(C Scale).txt,50
+Kaya.txt,150
+Harry.txt,157
+Sam.txt,172
+README.txt,476
+Richard.txt,277
+Winnie-the-Pooh.txt,152264
+Little-Women.txt,1071450
+Romeo-and-Juliet.txt,169541
+Grimms-Fairy-Tales.txt,560207
+README.txt,1112
+Crime-and-Punishment.txt,1201745
+README.txt,1368
+Kaya.txt,90
+Harry.txt,124
+Sam.txt,115
+README.txt,744
+Richard.txt,247

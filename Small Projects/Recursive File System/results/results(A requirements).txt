@@ -1,0 +1,24 @@
+results(finding diskUsage).txt, /Users/jadecuster/Desktop/CS245/lab03/l3-recursive-file-system-traversal-jadecuster/results/results(finding diskUsage).txt, 58
+results_searchTxt.txt, /Users/jadecuster/Desktop/CS245/lab03/l3-recursive-file-system-traversal-jadecuster/results/results_searchTxt.txt, 479
+results_folder.txt, /Users/jadecuster/Desktop/CS245/lab03/l3-recursive-file-system-traversal-jadecuster/results/results_folder.txt, 503
+results(finding txt file).txt, /Users/jadecuster/Desktop/CS245/lab03/l3-recursive-file-system-traversal-jadecuster/results/results(finding txt file).txt, 194
+results_search.txt, /Users/jadecuster/Desktop/CS245/lab03/l3-recursive-file-system-traversal-jadecuster/results/results_search.txt, 162
+results(C Scale).txt, /Users/jadecuster/Desktop/CS245/lab03/l3-recursive-file-system-traversal-jadecuster/results/results(C Scale).txt, 50
+results(in Folder).txt, /Users/jadecuster/Desktop/CS245/lab03/l3-recursive-file-system-traversal-jadecuster/results/results(in Folder).txt, 420
+Kaya.txt, /Users/jadecuster/Desktop/CS245/p1-2-social-network-analysis-jadecuster/Kaya.txt, 150
+Harry.txt, /Users/jadecuster/Desktop/CS245/p1-2-social-network-analysis-jadecuster/Harry.txt, 157
+Sam.txt, /Users/jadecuster/Desktop/CS245/p1-2-social-network-analysis-jadecuster/Sam.txt, 172
+README.txt, /Users/jadecuster/Desktop/CS245/p1-2-social-network-analysis-jadecuster/README.txt, 476
+Richard.txt, /Users/jadecuster/Desktop/CS245/p1-2-social-network-analysis-jadecuster/Richard.txt, 277
+Winnie-the-Pooh.txt, /Users/jadecuster/Desktop/CS245/lab01/l1-java-and-ood-refresher-jadecuster/Winnie-the-Pooh.txt, 152264
+Little-Women.txt, /Users/jadecuster/Desktop/CS245/lab01/l1-java-and-ood-refresher-jadecuster/Little-Women.txt, 1071450
+Romeo-and-Juliet.txt, /Users/jadecuster/Desktop/CS245/lab01/l1-java-and-ood-refresher-jadecuster/Romeo-and-Juliet.txt, 169541
+Grimms-Fairy-Tales.txt, /Users/jadecuster/Desktop/CS245/lab01/l1-java-and-ood-refresher-jadecuster/Grimms-Fairy-Tales.txt, 560207
+README.txt, /Users/jadecuster/Desktop/CS245/lab01/l1-java-and-ood-refresher-jadecuster/README.txt, 1112
+Crime-and-Punishment.txt, /Users/jadecuster/Desktop/CS245/lab01/l1-java-and-ood-refresher-jadecuster/Crime-and-Punishment.txt, 1201745
+README.txt, /Users/jadecuster/Desktop/CS245/l2-practice-with-linked-lists-jadecuster/README.txt, 1368
+Kaya.txt, /Users/jadecuster/Desktop/CS245/p1-1-social-network-analysis-jadecuster/Kaya.txt, 90
+Harry.txt, /Users/jadecuster/Desktop/CS245/p1-1-social-network-analysis-jadecuster/Harry.txt, 124
+Sam.txt, /Users/jadecuster/Desktop/CS245/p1-1-social-network-analysis-jadecuster/Sam.txt, 115
+README.txt, /Users/jadecuster/Desktop/CS245/p1-1-social-network-analysis-jadecuster/README.txt, 744
+Richard.txt, /Users/jadecuster/Desktop/CS245/p1-1-social-network-analysis-jadecuster/Richard.txt, 247
