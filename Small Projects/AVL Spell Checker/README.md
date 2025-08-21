@@ -1,0 +1,3 @@
+2024
+
+ I used an AVL Integer Tree that was originally given as a basis for this project and filled it out then I refactored it to fit strings instead. My menu consists of using numbers to get through menu items. My Check words it there to search if words are present in the tree just like last lab. My suggestions has a lot of my same ideas from a previous project done with the recursion but slightly different to get to a certain part of the tree and then gather suggestions from there.
