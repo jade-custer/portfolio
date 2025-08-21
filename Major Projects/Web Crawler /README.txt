@@ -1,0 +1,3 @@
+2024
+
+This project was focused in Software Development and the overall development of a web crawler including learning how to serve and crawl a website. While crawling Hrefs get cleaned and websites begin to be extracted for wanted information.This project was created over the span of multiple smaller projects. Created in Go for diversity in programming languages and to experience a language used by Google.
