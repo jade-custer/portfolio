@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI On Workforce</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/scrollama"></script>
+  <!-- setting up style for the website -->
+  <style>
+    body {
+      background-color: #343541;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    #scrolly {
+      display: flex;
+      margin-top: 30px;
+    }
+
+    #below-scrolly {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: #f4f4f4;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      font-family: sans-serif;
+      color: #333;
+}
+    #graphic {
+      position: sticky;
+      top: 50px;
+      width: 60%;
+      height: 90vh;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #chart-area {
+      width: 90%;
+      height: 90%;
+    }
+
+    #text {
+      width: 40%;
+      padding: 20px;
+    }
+
+    .step {
+      margin-bottom: 60vh;
+      padding: 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      font-size: 20px;
+    }
+
+    .axis-x path,
+    .axis-y path {
+      fill: none;
+      stroke: black;
+      shape-rendering: crispEdges;
+    }
+
+    .axis-x .tick line,
+    .axis-y .tick line {
+      stroke: #ccc;
+    }
+
+    .axis text {
+      color: black;
+      font-size: 10px;
+    }
+
+   .box {
+      stroke: #333;
+      stroke-width: 1;
+    }
+
+    .circle {
+      fill-opacity: 0.8;
+      stroke: black;
+      stroke-width: 0.5;
+    }
+
+    .axis-label {
+      font-size: 12px;
+      color: black;
+      font-weight: bold;
+    }
+
+    .dot-label {
+      font-size: 11px;
+      text-anchor: middle;
+    }
+
+    .header {
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .tooltip {
+      position: absolute;
+      background: white;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      padding: 8px;
+      font-size: 12px;
+      color:black;
+      pointer-events: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      opacity: 0;
+      transition: opacity 0.2s;
+      }
+
+    .axis-x text,
+    .axis-y text {
+      fill: black;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="header">
+  <h1>AI's Impact on the Workforce</h1>
+  <p>Jade Custer</p>
+</div>
+
+<!-- text boxes oriented on right side -->
+<div id="scrolly">
+  <div id="graphic">
+    <div id="chart-area"></div>
+  </div>
+  <div id="text">
+    <!-- Overview -->
+    <div class="step" data-step="0"><h1>Overview of AI's Impact</h1>
+      <p>AI has become an increasingly prominent use in multiple different fields as it can be transformative in it's impact. In recent times there are more and more LLMs (Large Language Models) developed by Anthropic, Google, Meta, OpenAI , as well as many more others. Due to the use of these LLMs it is commonly used  in the workplace to automate tasks and to create workflows that drives efficiency. With more AI being used in the workforce especially by younger generations who grow increasingly more familiar with it, it can create even bigger changes in the workforce which can leader to a risk to the employment of those in affected fields. In this dashboard we will explore how automation and AI are affecting different aspects of the workforce. Globally automation and AI are taking over for different reasons. With takeovers there have been job declines, changes in existing jobs, and creations of new jobs. Displacements have varying affects in industries and job titles. Millions of workers are displaced in best and worst case scenarios.Even in places where AI seems to be at lower risk of adoption there is still a risk of automation taking over. Though this isn't full comprehensive visualization of the risk of automation and AI in the workforce as not all countries are seen in the data especially some countries who make the most manufactured products for exports. We still see that there is always a risk of automation and AI globally. </p>
+      </div>
+    <!-- Bar Chart -->
+    <div class="step" data-step="1"><h1>Industry vs Automation Risk</h1>
+      <p>AI systems are used in many different industries and pose different risks in the industry. In some industries where very capable general use AI can replace the work of humans there is a huge risk of job loss and wage decline.As seen in the chart in all industries  there is about 15 jobs that are of low risk of automation with the industry lowest at risk being the energy industry. Medium Risk is low in the transportation industry and health industry but pretty close in all other industries. The AI adoption risk is high particularly in manufacturing and more suprisingly education. Manufacturing has been at risk of automation since the creation of the assembly lines and the nature of the work. Education however has no clear signs as to why it would be at risk of AI adoption. There have been recent developments with Duolingo switching to an AI forward agenda which could be the future of education.</p>
+        </div>
+    <!-- TreeMap -->
+    <div class="step" data-step="2"><h1>AI Exposure by Occupation</h1>
+      <p>Very few occupations can be fully automated ,but many different tasks in a job can be automated which can lead to significant transformations in the field and occupation. Certain jobs are more at risk than others specifically the jobs in the green section. It seems to be jobs that could be done by an AI specifically trained for the job as well as those where AI is already being used in industry  as a part of the job. In the red section where is mostly research positions and managerial positions. In the low risk section it's a mix of different positions. Thus position title isn't a very good idea of the specific jobs at risk. Perhaps its a bit more based on the specific industry that it is based in. Company size also doesn't also seem to have a big effect on AI risk.</p>
+        </div>
+    <!--  Scatter Plot-->
+    <div class="step" data-step="3"><h1>Skill Risk Analysis</h1>
+      <p>There is a growing want for higher level cognitive and digital skills which leads to a demand for skills such as programming and a lower demand for physical and manual skills which can be replaced by automation and AI streamlining in workforces that were previously done by humans. This in turn leading to the dumbell effect in job polarization. High level technical jobs and low skilled service jobs are in high demand but with very different pay disparities. Thus leading to the workforce need for reskilling. As seen in the graph marketing skills are at highest risk of both AI and automation adoption. Wheras Sales and Sales positions are at lowest risk of AI and automation adoption. Computer Science skills such as programming in different languages which are already being simulated by LLMs are varying in terms of risk levels for both AI and automation adoption. </p>
+        </div>
+    <!-- Box Plot 1 -->
+    <div class="step" data-step="4"><h1>Salary Distribution by AI Risk Level</h1>
+      <p>AI can lead to different changes on wages. For workers who's skills can be complemented by AI and lead to productivity and better work it can make their wages greater, but if AI can be used instead to do the work it can reduce demand and lead to potentially depressed wages. The median wage goes down with a higher risk level. Most other values staying within about the same range. </p>
+        </div>
+    <!-- Box Plot 2 -->
+    <div class="step" data-step="5"><h1>Salary Distribution by Automation Risk</h1>
+      <p>Automation puts a strain on middle-wages that can be dominated by automation. In turn high paying jobs such as those in the medical and tech fields are projected to grow significantly. Thus creating an exacerbation in wage polarization. Suprisingly the median salary grows higher with more risks. Nothing else seems to stand out in the data though since most of the ranges are pretty close.</p>
+        </div>
+  </div>
+</div>
+
+<!-- Methodology Section underneath  -->
+<div id="below-scrolly">
+  <h2>Methodology</h2>
+  <p>Works Cited</p>
+    <ul>
+    <li>Data Wrapper</li>
+    <li>AI Safety for Everyone - arXiv</li>
+    <li>Manyika, James, and Kevin Sneader. AI, AUTOMATION, AND THE FUTURE OF WORK: TEN THINGS TO SOLVE FOR. McKinsey & Company</li>
+    <li>Müller, Vincent C. Ethics of Artificial Intelligence and Robotics. Stanford Encyclopedia of Philosophy</li>
+    <li>FLI AI Safety Index 2024. Future of Life Institute</li>
+    <li>Automation, artificial intelligence, and job displacement in the U.S., 2019–22. Informa UK Limited</li>
+    <li>Bengio, Y., et al. International AI Safety Report</li>
+    <li>Beam, A. L., et al. Potential Biases in Machine Learning Algorithms Using Electronic Health Record Data. JAMA Intern Med, vol. 178, no. 11</li>
+    <li>ReSonAte: A Runtime Risk Assessment Framework for Autonomous Systems. ScopeLab</li>
+    <li>Understanding the Role of Automation in Society and its Impact on Labour Market. Formosa Publisher</li>
+   </ul>
+ <a href="https://www.kaggle.com/datasets/uom190346a/ai-powered-job-market-insights">DataSet</a>
+</div>
+
+<script>
+//initializing scrollama
+const scroller = scrollama();
+
+//initializing global variabless
+const margin = { top: 40, right: 40, bottom: 40, left: 60 };
+const width = 600;
+const height = 490;
+const dataURL = 'https://gist.githubusercontent.com/jadecuster/ba9f28bdd7885a9bdcedcbd87012c4ff/raw/20afe3fc4ccbd7c2ac7e358d547d1c2243742212/ai-analytics.csv';
+
+//scrollama setup
+scroller
+  .setup({
+    step: ".step",
+    offset: 0.1,
+    debug: false,
+  })
+  .onStepEnter(response => {
+    const stepIndex = response.index;
+    updateChart(stepIndex);
+  });
+
+// function that updates the chart based on the text that is currently showing
+function updateChart(step) {
+  //creating chart area
+  d3.select("#chart-area")
+    .transition()
+    .duration(200)
+    .style("opacity", 0)
+    .on("end", function () {
+      d3.select("#chart-area").html("");
+
+      //updating chart based on step
+      if (step === 0) {
+        d3.select("#chart-area").html(`
+      <iframe title="Automation and AI Risk Globally " aria-label="Map" id="datawrapper-chart-N85ch" src="https://datawrapper.dwcdn.net/N85ch/3/" scrolling="no" frameborder="0" style="border: none;" width="800" height="800" data-external="1"></iframe>
+      `);
+      } else if (step === 1) {
+        drawBarChart();
+      } else if (step === 2) {
+        drawTreemap();
+      } else if (step === 3) {
+        drawScatterPlot();
+      } else if (step === 4) {
+        drawBoxPlot("#chart-area",'AI_Adoption_Level', 'Salary by AI Adoption Level','AI Risk','Boxplot shows when comparing salary by AI risk there is a trend of decrease in the median salary');
+      } else if (step === 5) {
+        drawBoxPlot("#chart-area",'Automation_Risk', 'Salary by Automation Risk', 'Automation Risk','Boxplot shows when comparing salary by automation risk there is an increase in median and q1 salary');
+      }
+
+      // fade in new chart
+      d3.select("#chart-area")
+        .transition()
+        .duration(200)
+        .style("opacity", 1);
+    });
+}
+
+//drawing bar chart
+function drawBarChart() {
+  //make sure tooltips don't stay
+  d3.select('.tooltip').remove();
+
+  //creating SVG
+  const svgBar = d3.select("#chart-area")
+  .append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform", `translate(${margin.left + 50},${margin.top})`);
+
+  //setting up tooltips
+  const tooltip = d3.select("body")
+  .append("div")
+  .attr("class", "tooltip")
+  .style("position", "absolute")
+  .style("padding", "8px")
+  .style("background", "#fff")
+
+  .style("border", "1px solid #ccc")
+  .style("border-radius", "4px")
+  .style("pointer-events", "none")
+  .style("opacity", 0);
+
+  //extracting data for risks and industries
+  d3.csv(dataURL).then(function (data) {
+  const risks = ['Low', 'Medium', 'High'];
+  const industries = Array.from(new Set(data.map((d) => d.Industry)));
+
+  const industryData = {};
+  industries.forEach((ind) => {
+    industryData[ind] = { Low: 0, Medium: 0, High: 0 };
+  });
+
+  data.forEach((d) => {
+    const ind = d.Industry;
+    const risk = d.Automation_Risk;
+    if (industryData[ind] && risks.includes(risk)) {
+      industryData[ind][risk]++;
+    }
+  });
+
+  //formatting data 
+  const formattedData = industries.map((ind) => ({
+    Industry: ind,
+    ...industryData[ind],
+  }));
+
+  //setting up some values
+  const stack = d3.stack().keys(risks);
+  const series = stack(formattedData);
+
+  const y = d3
+    .scaleBand()
+    .domain(industries)
+    .range([0, height])
+    .padding(0.2);
+
+  const x = d3
+    .scaleLinear()
+    .domain([
+      0,
+      d3.max(formattedData, (d) => d.Low + d.Medium + d.High),
+    ])
+    .nice()
+    .range([0, width]);
+
+  const color = d3
+    .scaleOrdinal()
+    .domain(risks)
+    .range(['#66c2a5', '#FDFF80', '#F03228']);
+
+  const barGroup = svgBar.append('g').attr('transform', 'translate(0, 0)');
+
+  //appending on sections
+  barGroup
+  .selectAll('g')
+  .data(series)
+  .enter()
+  .append('g')
+  .attr('fill', (d) => color(d.key))
+  .selectAll('rect')
+  .data((d) => d.map((v) => ({ ...v, key: d.key }))) // attach key to data
+  .enter()
+  .append('rect')
+  .attr('y', (d) => y(d.data.Industry))
+  .attr('x', (d) => x(d[0]))
+  .attr('width', (d) => x(d[1]) - x(d[0]))
+  .attr('height', y.bandwidth())
+  .on("mouseover", (event, d) => {
+    tooltip
+      .style("opacity", 1)
+      .style("fill",'black')
+      .html(`
+        <strong>Industry:</strong> ${d.data.Industry}<br/>
+        <strong>Risk:</strong> ${d.key}<br/>
+        <strong>Count:</strong> ${d.data[d.key]}
+      `)
+      .style("left", (event.pageX + 10) + "px")
+      .style("top", (event.pageY - 28) + "px");
+  })
+  .on("mousemove", (event) => {
+    tooltip
+      .style("left", (event.pageX + 10) + "px")
+      .style("top", (event.pageY - 28) + "px");
+  })
+  .on("mouseout", () => {
+    tooltip
+      .style("opacity", 0)
+  });
+
+  //adding title
+  svgBar.append("text")
+  .attr("x", width / 2)
+  .attr("y", 0) 
+  .attr("text-anchor", "middle")
+  .style("font-size", "20px")
+  .style("font-weight", "bold")
+  .text("AI Exposure by Industry");
+
+  //xAxis
+  svgBar
+    .append('g')
+    .attr('class', 'axis-x')
+    .attr('transform', `translate(0,${height})`)
+    .call(d3.axisBottom(x));
+
+  svgBar
+    .append('text')
+    .attr('x', width / 2)
+    .attr('y', height + margin.bottom)
+    .style('text-anchor', 'middle')
+    .style('font-size', '16px')
+    .style('fill', 'black')
+    .style('font-weight', 'bold')
+    .text('Job Count');
+
+  //yAxis
+  svgBar
+    .append('g')
+    .attr('class', 'axis-y')
+    .call(d3.axisLeft(y));
+
+  svgBar
+    .append('text')
+    .attr('transform', 'rotate(-90)')
+    .attr('x', -height / 2 + 30)
+    .attr('y', -margin.left- 40)
+    .style('text-anchor', 'middle')
+    .style('font-size', '16px')
+    .style('font-weight', 'bold')
+    .style('fill', 'black')
+    .text('Industry');
+
+  //adding on legend
+  const legend = svgBar
+    .selectAll('.legend')
+    .data(risks)
+    .enter()
+    .append('g')
+    .style('fill',"black")
+    .attr('transform', (d, i) => `translate(0, ${i * 20})`);
+
+  legend
+    .append('rect')
+    .attr('x', width - 20)
+    .attr('width', 15)
+    .attr('height', 10)
+    .attr('fill', (d) => color(d));
+
+  legend
+    .append('text')
+    .attr('x', width - 25)
+    .attr('y', 5)
+    .attr('text-anchor', 'end')
+    .style('font-size', '16px')
+    .text((d) => d);
+  });
+}
+
+//drawing tree map
+function drawTreemap() {
+  const svg = d3.select("#chart-area")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom);
+
+  const titleHeight = 40;
+
+  //same color scheme from other charts
+  const color = d3
+  .scaleOrdinal()
+  .range(['#66c2a5', '#FDFF80', '#F03228']);
+
+  //reading in needed data for chart
+  d3.csv(dataURL).then(data => {
+  const aiAdoptionLevels = Array.from(new Set(data.map(d => d.AI_Adoption_Level)));
+  color.domain(aiAdoptionLevels);
+
+  data.forEach(d => {
+    d.Salary_USD = +d.Salary_USD;
+  });
+
+  const nested = d3.rollup(
+    data,
+    v => v,
+    d => d.AI_Adoption_Level,
+    d => d.Job_Title
+  );
+
+  const root = d3.hierarchy([null, nested], ([key, value]) =>
+    value instanceof Map ? Array.from(value) : null
+  ).sum(([key, value]) => value.length);
+
+  //drawing tree map
+  d3.treemap()
+    .size([width + 100, height - titleHeight + 100])
+    .padding(2)(root);
+
+  //title
+  svg.append("text")
+    .attr("x", (width + 100) / 2)
+    .attr("y", 30)
+    .attr("text-anchor", "middle")
+    .style("font-size", "20px")
+    .style("font-weight", "bold")
+    .text("AI Exposure by Occupation");
+
+  const chartGroup = svg.append("g")
+    .attr("transform", `translate(0, ${titleHeight})`);
+
+  const nodes = chartGroup.selectAll("g")
+    .data(root.leaves())
+    .enter()
+    .append("g")
+    .attr("transform", d => `translate(${d.x0},${d.y0})`);
+
+  //treemap rectangles
+  nodes.append("rect")
+    .attr("width", d => d.x1 - d.x0)
+    .attr("height", d => d.y1 - d.y0)
+    .attr("fill", d => color(d.parent.data[0]));
+
+  //job title
+  nodes.append("text")
+    .attr("x", 4)
+    .attr("y", 12)
+    .text(d => d.data[0])
+    .style("font-size", '7px')
+    .style("fill", "black")
+    .style("text-anchor", "start");
+
+  //count
+  nodes.append("text")
+    .attr("x", 4)
+    .attr("y", 22)
+    .text(d => `Count: ${d.value}`)
+    .style("font-size", '7px')
+    .style("fill", "black")
+    .style("text-anchor", "start");
+
+  //company size
+  nodes.append("text")
+    .attr("x", 4)
+    .attr("y", 32)
+    .text(d => `Size: ${d.data[1][0].Company_Size}`)
+    .style("font-size", '7px')
+    .style("fill", "black")
+    .style("text-anchor", "start");
+  });
+}
+
+//drawing scatter plot
+function drawScatterPlot() {
+  // Removing tooltips so that they don't get stuck on screen 
+d3.select('.tooltip').remove();
+
+const ssvg = d3.select("#chart-area")
+  .append("svg")
+  .attr("width", width + margin.left + 100)
+  .attr("height", height + margin.top + margin.bottom + 70);
+
+const chartGroup = ssvg.append("g")
+  .attr("transform", `translate(${margin.left + 30}, ${margin.top})`);
+
+const riskLevels = ['Low', 'Medium', 'High'];
+const riskToNum = { Low: 1, Medium: 2, High: 3 };
+const numToRisk = { 1: 'Low', 2: 'Medium', 3: 'High' };
+
+const x = d3.scaleLinear().domain([1, 3]).range([0, width]);
+const y = d3.scaleLinear().domain([1, 3]).range([height, 0]);
+
+// Load data and process
+d3.csv(dataURL).then((data) => {
+  data.forEach((d) => {
+    d.ai = riskToNum[d.AI_Adoption_Level];
+    d.auto = riskToNum[d.Automation_Risk];
+    d.company = d.Company_Size;
+  });
+
+  const grouped = d3.rollups(
+    data,
+    (v) => ({
+      avgAI: d3.mean(v, (d) => d.ai),
+      avgAuto: d3.mean(v, (d) => d.auto),
+      company: v[0].company
+    }),
+    d => d.Job_Title,
+    d => d.Required_Skills
+  );
+
+  const avgData = [];
+  grouped.forEach(([title, skills]) => {
+    skills.forEach(([skill, vals]) => {
+      avgData.push({
+        title,
+        skill,
+        avgAI: vals.avgAI,
+        avgAuto: vals.avgAuto,
+        company: vals.company
+      });
+    });
+  });
+
+  // Set color scale based on company size
+  const uniqueCompanies = [...new Set(avgData.map(d => d.company))];
+  const color = d3.scaleOrdinal()
+    .domain(uniqueCompanies)
+    .range(d3.schemeCategory10);
+
+  // Title
+  ssvg.append("text")
+    .attr("x", (width + 100) / 2)
+    .attr("y", 20)
+    .attr("text-anchor", "middle")
+    .style("font-size", "20px")
+    .style("font-weight", "bold")
+    .text("AI Adoption vs. Automation Risk by Industry and Skill");
+
+  // Axes
+  chartGroup.append('g')
+    .attr('transform', `translate(0, ${height})`)
+    .call(d3.axisBottom(x).ticks(3).tickFormat(d => numToRisk[d]))
+    .selectAll("text")
+    .style('font-size','14px')
+    .style("fill", "black");
+
+  chartGroup.append('g')
+    .call(d3.axisLeft(y).ticks(3).tickFormat(d => numToRisk[d]))
+    .selectAll("text")
+    .style('font-size','14px')
+    .style("fill", "black");
+
+  chartGroup.selectAll(".domain, .tick line")
+    .style("stroke", "black");
+
+  // Axis labels
+  chartGroup.append('text')
+    .attr('x', width / 2)
+    .attr('y', height + 40)
+    .attr('text-anchor', 'middle')
+    .style('fill', 'black')
+    .style('font-weight', "bold")
+    .text('AI Adoption Level');
+
+  chartGroup.append('text')
+    .attr('transform', 'rotate(-90)')
+    .attr('x', -height / 2)
+    .attr('y', -70)
+    .attr('text-anchor', 'middle')
+    .style('fill', 'black')
+    .style('font-weight', "bold")
+    .text('Automation Risk');
+
+  // Circles
+  const circles = chartGroup.selectAll('circle')
+    .data(avgData)
+    .enter()
+    .append('circle')
+    .attr('cx', d => x(d.avgAI))
+    .attr('cy', d => y(d.avgAuto))
+    .attr('r', 6)
+    .attr('fill', d => color(d.company))
+    .attr('opacity', 0.75);
+
+  // Tooltips
+  const tooltip = d3.select('body')
+    .append('div')
+    .attr('class', 'tooltip')
+    .style('opacity', 0)
+    .style('color', 'black')
+    .style('position', 'absolute')
+    .style('background', 'white')
+    .style('padding', '6px');
+
+  circles
+    .on('mouseover', function (event, d) {
+      tooltip
+        .style('opacity', 1)
+        .html(
+          `<strong>Job Title:</strong> ${d.title}<br>
+           <strong>Skill:</strong> ${d.skill}<br>
+           <strong>Company Size:</strong> ${d.company}<br>
+           Avg. AI Adoption: ${d.avgAI.toFixed(2)}<br>
+           Avg. Automation Risk: ${d.avgAuto.toFixed(2)}`
+        );
+      d3.select(this).attr('stroke', '#000').attr('stroke-width', 2);
+    })
+    .on('mousemove', function (event) {
+      tooltip
+        .style('left', event.pageX + 10 + 'px')
+        .style('top', event.pageY - 28 + 'px');
+    })
+    .on('mouseout', function () {
+      tooltip.style('opacity', 0);
+      d3.select(this).attr('stroke', null);
+    });
+
+  // Legend by company size
+  const legend = ssvg.append('g')
+    .attr('class', 'legend')
+    .attr('transform', `translate(${width + margin.left - 20 }, ${margin.top})`);
+
+  legend.selectAll('g')
+    .data(uniqueCompanies)
+    .enter()
+    .append('g')
+    .attr('transform', (d, i) => `translate(0, ${i * 20})`)
+    .each(function (d) {
+      d3.select(this)
+        .append('rect')
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('width', 12)
+        .attr('height', 12)
+        .attr('fill', color(d));
+
+      d3.select(this)
+        .append('text')
+        .attr('x', 18)
+        .attr('y', 10)
+        .text(d)
+        .style('font-size', '10px')
+        .style('fill', 'black');
+    });
+});
+
+}
+
+//drawing box plot 
+function drawBoxPlot(containerID, groupField, title,xAxis,caption) {
+  //removing tooltips so that they don't stay on the page.
+  d3.select('.tooltip').remove();
+
+  const order = ['low', 'medium', 'high'];
+
+  const svg = d3
+    .select(containerID)
+    .append('svg')
+    .attr('width', width + margin.left + margin.right)
+    .attr('height', height + margin.top + margin.bottom + 80)
+    .append('g')
+    .attr('transform', `translate(${margin.left + 70},${margin.top - 10} )`);
+  const tooltip = d3.select('body').append('div')
+    .attr('class', 'tooltip') 
+    .style('position', 'absolute')
+    .style('opacity', 0)
+    .style('background', 'white')
+    .style('border', '1px solid #aaa')
+    .style('border-radius', '5px')
+    .style('padding', '8px')
+    .style('font-size', '12px')
+    .style('pointer-events', 'none')
+    .style('box-shadow', '0 2px 5px rgba(0, 0, 0, 0.3)')
+    .style('transition', 'opacity 0.2s');
+
+  //getting necessary data for the charts
+  d3.csv(dataURL).then((data) => {
+    data.forEach((d) => {
+      d.Salary_USD = +d.Salary_USD;
+      d[groupField] = d[groupField].toLowerCase();
+    });
+
+    const grouped = Array.from(
+      d3.group(data, (d) => d[groupField]),
+      ([key, values]) => {
+        const salaries = values.map((d) => d.Salary_USD).sort(d3.ascending);
+        return {
+          key,
+          q1: d3.quantile(salaries, 0.25),
+          median: d3.quantile(salaries, 0.5),
+          q3: d3.quantile(salaries, 0.75),
+          min: d3.min(salaries),
+          max: d3.max(salaries),
+        };
+      }
+    );
+
+    //setting up same color scale from earlier charts
+    const color = d3
+      .scaleOrdinal()
+      .domain(order)
+      .range(['#66c2a5', '#FDFF80', '#F03228']);
+
+    grouped.sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
+
+    const x = d3.scaleBand().domain(order).range([0, width]).padding(0.3);
+    const y = d3.scaleLinear().domain([0, d3.max(grouped, d => d.max)]).nice().range([height, 0]);
+
+    // x-axis
+    svg.append('g')
+      .attr('transform', `translate(0, ${height})`)
+      .call(d3.axisBottom(x).tickFormat(d => d.charAt(0).toUpperCase() + d.slice(1)))
+      .call(g => g.selectAll("text").style("fill", "black")) .style('font-size', '14px')
+      .call(g => g.selectAll("path, line").style("stroke", "black"));
+
+    // y-axis
+    svg.append('g')
+      .call(d3.axisLeft(y))
+      .call(g => g.selectAll("text").style("fill", "black")) .style('font-size', '14px')
+      .call(g => g.selectAll("path, line").style("stroke", "black"));
+
+    // boxes
+    svg.selectAll('.box')
+      .data(grouped)
+      .enter()
+      .append('rect')
+      .attr('class', 'box')
+      .attr('x', d => x(d.key))
+      .attr('y', d => y(d.q3))
+      .attr('width', x.bandwidth())
+      .attr('height', d => y(d.q1) - y(d.q3))
+      .attr('fill', d => color(d.key))
+      .attr('stroke', 'black')
+      .attr('stroke-width', 1)
+      .on('mouseover', function (event, d) {
+        tooltip.style('opacity', 1)
+          .style("color", "black")
+          .html(
+            `<strong>${d.key.charAt(0).toUpperCase() + d.key.slice(1)}</strong><br>
+            Q1: $ ${d.q1.toFixed(2)}<br>
+            Median: $ ${d.median.toFixed(2)}<br>
+            Q3: $ ${d.q3.toFixed(2)}<br>
+            Min: $ ${d.min.toFixed(2)}<br>
+            Max: $ ${d.max.toFixed(2)}`
+          );
+        d3.select(this).attr('stroke', '#FF5733').attr('stroke-width', 2);
+      })
+      .on('mousemove', event => {
+        tooltip.style('left', event.pageX + 10 + 'px').style('top', event.pageY - 28 + 'px');
+      })
+      .on('mouseout', function () {
+        tooltip.style('opacity', 0);
+        d3.select(this).attr('stroke', 'black').attr('stroke-width', 1);
+      });
+
+    // median
+    svg.selectAll('.median')
+      .data(grouped)
+      .enter()
+      .append('line')
+      .attr('class', 'median')
+      .attr('x1', d => x(d.key))
+      .attr('x2', d => x(d.key) + x.bandwidth())
+      .attr('y1', d => y(d.median))
+      .attr('y2', d => y(d.median))
+      .attr('stroke', 'black')
+      .attr('stroke-width', 2);
+
+    // min lines
+    svg.selectAll('.min')
+      .data(grouped)
+      .enter()
+      .append('line')
+      .attr('x1', d => x(d.key) + x.bandwidth() / 2)
+      .attr('x2', d => x(d.key) + x.bandwidth() / 2)
+      .attr('y1', d => y(d.min))
+      .attr('y2', d => y(d.q1))
+      .attr('stroke', 'black')
+      .attr('stroke-width', 2);
+
+    // max lines
+    svg.selectAll('.max')
+      .data(grouped)
+      .enter()
+      .append('line')
+      .attr('x1', d => x(d.key) + x.bandwidth() / 2)
+      .attr('x2', d => x(d.key) + x.bandwidth() / 2)
+      .attr('y1', d => y(d.q3))
+      .attr('y2', d => y(d.max))
+      .attr('stroke', 'black')
+      .attr('stroke-width', 2);
+
+    // title
+    svg.append('text')
+      .attr('x', width / 2)
+      .attr('y', -10)
+      .attr("text-anchor", "middle")
+      .style("font-size", "20px")
+      .style("font-weight", "bold")
+      .text(title);
+
+    // y-axis label
+    svg.append('text')
+      .attr('transform', 'rotate(-90)')
+      .attr('x', -height / 2)
+      .attr('y', -margin.left -10)
+      .attr('text-anchor', 'middle')
+      .style('fill', 'black')
+      .style("font-weight", "bold")
+      .text('Salary (USD)');
+
+    // x-axis label
+    svg.append('text')
+      .attr('x', width / 2)
+      .attr('y', height + margin.bottom - 5)
+      .attr('text-anchor', 'middle')
+      .style('fill', 'black')
+      .style("font-weight", "bold")
+      .text(xAxis);
+
+    // caption
+    svg.append('text')
+    .attr('x', width / 2 - 10)
+    .attr('y', height + margin.bottom + 8)
+    .attr('text-anchor', 'middle')
+    .style('fill', 'gray')
+    .style('font-size', '12px')
+    .text(caption);
+    });
+}
+
+</script>
+</body>
+</html>

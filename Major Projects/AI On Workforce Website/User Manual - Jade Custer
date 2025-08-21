@@ -1,0 +1,30 @@
+User Manual - Jade Custer
+
+- Laptop Specifications (for visual purposes)
+	- Macbook 13 inches
+		- In case the visualizations/words don't look big enough. I am working on a 13 in laptop so looks can vary and it looks readable on my end.
+
+-JavaScript Libraries
+	-D3.js v7
+		- see <script src="https://d3js.org/d3.v7.min.js"></script>
+	-Scrollama
+		-see <script src="https://unpkg.com/scrollama"></script>
+
+- Python Version
+	- Python 3.11.1
+
+-Running locally and online 
+	-Locally
+		-Open file to interact with data and charts
+	-Else see live at https://jadecuster.github.io/AI_on_Workforce/
+
+-How website works 
+	-First chart will not load until scrolling happens
+		-Datawrapper chart has to get reloaded in each time you see it so give it a second to load 
+	-As you scroll the charts will load in based on the subtitles on the right side. 
+		-Tooltips work with hover and after hovering they disappear.
+
+-Quick Change Tips
+	-Margins and width/height is global for the svgs so if all of the charts have to resized its a quick fix.
+	-Each chart is in a draw function so if anything about a particular chart needs to be changed or moved look for the function
+		-An exception is the Datawrapper chart that loads in from an embed.

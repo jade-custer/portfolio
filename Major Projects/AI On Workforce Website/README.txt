@@ -1,0 +1,3 @@
+2025
+
+This project was a result of my Data Visualization class where we learned the importance of visualizing data in such a way that it doesn't mislead consumers and emphasizes anomalies in the data. With this project I learned website building including what best makes a website show correct information and information in such an order that it makes sense. Although a first attempt at Data Visualization it was a promising look into new skills and avenues.
